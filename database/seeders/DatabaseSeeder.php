@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,5 +17,12 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
+
+        DB::table('users')->insert([
+            'name'      => 'Janathan Medero Pineda',
+            'slug'      =>  Str::slug('Janathan Medero Pineda'),
+            'email'     => 'webmaster@pyscom.com',
+            'password'  => Hash::make('webmaster.pyscom2021'),
+        ]);
     }
 }

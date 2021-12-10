@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href="{{ asset('css/owl-carousel/owl.carousel.min.css') }}" />
 	<link rel="stylesheet" href="{{ asset('css/nice-select/css/nice-select.css') }}" />
 	<!-- main css -->
-	<link rel="stylesheet" href="css/style.css" />
+	<link rel="stylesheet" href="{{ asset('css/style.css') }}" />
 </head>
 
 @yield('content')

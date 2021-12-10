@@ -1,11 +1,18 @@
-@extends('layouts.app')
+@extends('layouts.template')
+
+@section('head')
+    Restablecer contraseña
+@endsection
 
 @section('content')
+
+<x-header></x-header>
+
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-8" style="margin-top: 200px;">
             <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+                <div class="card-header">Restablecer contraseña</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -18,10 +25,10 @@
                         @csrf
 
                         <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">Correo electrónico</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -31,11 +38,9 @@
                             </div>
                         </div>
 
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Send Password Reset Link') }}
-                                </button>
+                        <div class="row mb-2 d-flex justify-content-center">
+                            <div class="col-md-10 mt-4">
+                                <button type="submit" class="primary-btn ml-sm-3 ml-0 btn-block">Enviar corrreo de recuperación</button>
                             </div>
                         </div>
                     </form>
