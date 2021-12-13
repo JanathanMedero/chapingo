@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -35,9 +38,18 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUserRequest $request)
     {
-        //
+
+        User::create([
+            'name'      => $request->name,
+            'slug'      => Str::slug($request->name),
+            'email'     => $request->email,
+            'password'  => Hash::make($request->password),
+        ])->assignRole($request->role);
+
+        return redirect()->route('users.index')->with('success', 'Usuario registrado correctamente');
+
     }
 
     /**

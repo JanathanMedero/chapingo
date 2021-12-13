@@ -25,6 +25,9 @@ Usuarios registrados
 							</div>
 						</div>
 					</div>
+
+					<x-alerts></x-alerts>
+
 				</card-header>
 				<div class="card-body">
 					<div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">

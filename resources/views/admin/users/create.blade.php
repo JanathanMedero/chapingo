@@ -17,21 +17,33 @@ Crear nuevo usuario
 							<h3 class="card-tittle">Nuevo usuario</h3>
 						</div>
 					</div>
+
+					@if($errors->any())
+					<div class="alert alert-danger alert-dismissible show fade mt-2">
+						<ul class="mb-0">
+							@foreach($errors->all() as $error)
+							<li>{{ $error }}</li>
+							@endforeach
+						</ul>
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+					@endif
+
 				</card-header>
-				<form action="#">
+				<form action="{{ route('users.store') }}" method="POST">
 					@csrf
 					<div class="card-body pt-2">
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="name">Nombre</label>
-									<input type="text" class="form-control" id="name" name="name" placeholder="Ingresa el nombre">
+									<input type="text" class="form-control" id="name" name="name" placeholder="Ingresa el nombre" value="{{ old('name') }}">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="email">Correo electrónico</label>
-									<input type="email" class="form-control" id="email" name="email" placeholder="Ingresa el correo electrónico">
+									<input type="email" class="form-control" id="email" name="email" placeholder="Ingresa el correo electrónico" value="{{ old('email') }}">
 								</div>
 							</div>
 						</div>
@@ -51,9 +63,9 @@ Crear nuevo usuario
 							<div class="col-md-4">
 								<div class="input-group mt-4">
 									<label class="input-group-text" for="role">Selecciona un rol</label>
-									<select class="form-select" id="role">
-										<option value="1">Administrador</option>
-										<option value="2">Moderador</option>
+									<select class="form-select" id="role" name="role">
+										<option value="administrator">Administrador</option>
+										<option value="moderator">Moderador</option>
 									</select>
 								</div>
 							</div>
