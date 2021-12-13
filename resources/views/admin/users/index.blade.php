@@ -7,9 +7,7 @@ Usuarios registrados
 @section('content')
 <div id="main">
 
-	<x-header-admin>
-		
-	</x-header-admin>
+	<x-header-admin></x-header-admin>
 
 	<div class="page-content">
 		<section class="section">
@@ -22,7 +20,7 @@ Usuarios registrados
 						<div class="col-6">
 							<div class="row d-flex justify-content-end">
 								<div class="col-4">
-									<a href="#" class="btn btn-success btn-block">Agregar usuario</a>
+									<a href="{{ route('users.create') }}" class="btn btn-success btn-block">Agregar usuario</a>
 								</div>
 							</div>
 						</div>

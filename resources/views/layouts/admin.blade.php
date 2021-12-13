@@ -44,7 +44,7 @@
                         </li>
 
                         @can('show users')
-                        <li class="sidebar-item {{ request()->is('users') ? 'active' : '' }}">
+                        <li class="sidebar-item {{ request()->is('users') ? 'active' : '' }} {{ request()->is('nuevo-usuario') ? 'active' : '' }}">
                             <a href="{{ route('users.index') }}" class='sidebar-link'>
                                 <i class="bi bi-person-lines-fill"></i>
                                 <span>Usuarios</span>
