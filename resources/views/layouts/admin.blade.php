@@ -36,14 +36,28 @@
                     <ul class="menu">
                         <li class="sidebar-title">Menu</li>
 
-                        <li class="sidebar-item active ">
-                            <a href="index.html" class='sidebar-link'>
+                        <li class="sidebar-item {{ request()->is('admin') ? 'active' : '' }}">
+                            <a href="{{ route('admin') }}" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Dashboard</span>
                             </a>
                         </li>
 
-                        <li class="sidebar-item  has-sub">
+                        <li class="sidebar-item {{ request()->is('users') ? 'active' : '' }}">
+                            <a href="{{ route('users.index') }}" class='sidebar-link'>
+                                <i class="bi bi-person-lines-fill"></i>
+                                <span>Usuarios</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a href="{{ route('admin') }}" class='sidebar-link'>
+                                <i class="bi bi-megaphone-fill"></i>
+                                <span>Noticias</span>
+                            </a>
+                        </li>
+
+                        {{-- <li class="sidebar-item  has-sub">
                             <a href="#" class='sidebar-link'>
                                 <i class="bi bi-stack"></i>
                                 <span>Components</span>
@@ -92,9 +106,9 @@
                                     <a href="component-tooltip.html">Tooltip</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> --}}
 
-                        <li class="sidebar-item  has-sub">
+                        {{-- <li class="sidebar-item  has-sub">
                             <a href="#" class='sidebar-link'>
                                 <i class="bi bi-collection-fill"></i>
                                 <span>Extra Components</span>
@@ -228,9 +242,9 @@
                                     <a href="ui-widgets-todolist.html">To-do List</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> --}}
 
-                        <li class="sidebar-item  has-sub">
+                        {{-- <li class="sidebar-item  has-sub">
                             <a href="#" class='sidebar-link'>
                                 <i class="bi bi-egg-fill"></i>
                                 <span>Icons</span>
@@ -283,9 +297,9 @@
                                     <a href="ui-map-jsvectormap.html">JS Vector Map</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> --}}
 
-                        <li class="sidebar-title">Pages</li>
+                        {{-- <li class="sidebar-title">Pages</li>
 
                         <li class="sidebar-item  ">
                             <a href="application-email.html" class='sidebar-link'>
@@ -349,9 +363,9 @@
                                     <a href="error-500.html">500</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> --}}
 
-                        <li class="sidebar-title">Raise Support</li>
+                        {{-- <li class="sidebar-title">Raise Support</li>
 
                         <li class="sidebar-item  ">
                             <a href="https://zuramai.github.io/mazer/docs" class='sidebar-link'>
@@ -372,7 +386,7 @@
                                 <i class="bi bi-cash"></i>
                                 <span>Donate</span>
                             </a>
-                        </li>
+                        </li> --}}
 
                     </ul>
                 </div>
