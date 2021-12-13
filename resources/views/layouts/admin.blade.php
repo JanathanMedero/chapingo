@@ -43,12 +43,14 @@
                             </a>
                         </li>
 
+                        @can('show users')
                         <li class="sidebar-item {{ request()->is('users') ? 'active' : '' }}">
                             <a href="{{ route('users.index') }}" class='sidebar-link'>
                                 <i class="bi bi-person-lines-fill"></i>
                                 <span>Usuarios</span>
                             </a>
                         </li>
+                        @endcan
 
                         <li class="sidebar-item">
                             <a href="{{ route('admin') }}" class='sidebar-link'>

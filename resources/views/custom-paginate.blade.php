@@ -1,4 +1,4 @@
-<div class="dataTable-info">Mostrando 1 de {{ $paginator->count() }} registros</div>
+{{-- <div class="dataTable-info">Mostrando 1 de {{ $paginator->count() }} registros</div> --}}
 
 @if($paginator->hasPages())
 
