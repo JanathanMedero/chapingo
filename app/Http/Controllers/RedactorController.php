@@ -62,9 +62,11 @@ class RedactorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
-        //
+        $user = User::where('slug', $slug)->first();
+
+        return view('admin.redactorUsers.edit', compact('user'));
     }
 
     /**
@@ -85,8 +87,19 @@ class RedactorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($slug)
     {
-        //
+
+        $user = User::where('slug', $slug)->first();
+
+        if(Auth::user()->slug == $slug)
+        {
+            return redirect()->route('redactor.index')->with('delete', 'No puedes eliminar a este redactor, actualmente esta en uso');
+        }else
+        {
+            User::where('slug', $slug)->delete();
+
+            return redirect()->route('redactor.index')->with('success', 'Redactor eliminado correctamente');
+        }
     }
 }

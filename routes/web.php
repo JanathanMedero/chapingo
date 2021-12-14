@@ -29,6 +29,8 @@ Route::middleware(['auth'])->group(function () {
 
     //Redactor
     Route::get('redactors', [RedactorController::class, 'index'])->name('redactor.index');
+    Route::get('editar-usuario/{slug}/redactor/', [RedactorController::class, 'edit'])->name('redactorUser.edit');
+    Route::delete('eliminar-usuario/{slug}/redactor', [RedactorController::class, 'destroy'])->name('redactorUser.delete');
 
 });
 

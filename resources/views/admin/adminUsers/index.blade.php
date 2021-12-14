@@ -17,6 +17,9 @@ Administradores
 						<div class="col-6">
 							<h3 class="card-tittle">Tabla de administradores</h3>
 						</div>
+						<div class="col-6 d-flex justify-content-end">
+							<a href="{{ route('users.create') }}" class="btn btn-success">Agregar usuario</a>
+						</div>
 						<x-alerts></x-alerts>
 					</div>
 				</card-header>

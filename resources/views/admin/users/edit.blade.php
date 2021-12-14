@@ -54,6 +54,7 @@ Editar usuario: {{ $user->name }}
 									<select class="form-select" id="role" name="role">
 										<option value="administrator" {{ $user->hasRole('administrator') ? 'selected' : '' }}>Administrador</option>
 										<option value="moderator" {{ $user->hasRole('moderator') ? 'selected' : '' }}>Moderador</option>
+										<option value="redactor" {{ $user->hasRole('redactor') ? 'selected' : '' }}>Redactor</option>
 									</select>
 								</div>
 							</div>

@@ -53,7 +53,14 @@ class UserController extends Controller
             'password'  => Hash::make($request->password),
         ])->assignRole($request->role);
 
-        return redirect()->route('users.index')->with('success', 'Usuario registrado correctamente');
+        $user = Auth::user();
+
+        if ( $user->hasRole('administrator') ) {
+            return redirect()->route('adminUser.index')->with('success', 'Usuario registrado correctamente');   
+        }else
+        {
+            return redirect()->route('redactor.index')->with('success', 'Usuario registrado correctamente');
+        }
 
     }
 
@@ -110,8 +117,10 @@ class UserController extends Controller
 
         if (Str::contains($route, 'administrador')) {
             return redirect()->route('adminUser.index')->with('success', 'Usuario actualizado correctamente');
-        }else{
+        }elseif (Str::contains($route, 'moderador')){
             return redirect()->route('users.index')->with('success', 'Usuario actualizado correctamente');
+        }else{
+            return redirect()->route('redactor.index')->with('success', 'Usuario actualizado correctamente');
         }
 
     }

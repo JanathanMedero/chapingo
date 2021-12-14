@@ -64,8 +64,11 @@ Crear nuevo usuario
 								<div class="input-group mt-4">
 									<label class="input-group-text" for="role">Selecciona un rol</label>
 									<select class="form-select" id="role" name="role">
+										@can('show users')
 										<option value="administrator">Administrador</option>
 										<option value="moderator">Moderador</option>
+										@endcan
+										<option value="redactor">Redactor</option>
 									</select>
 								</div>
 							</div>

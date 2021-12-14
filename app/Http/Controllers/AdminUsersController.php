@@ -89,14 +89,12 @@ class AdminUsersController extends Controller
      */
     public function destroy($slug)
     {
-        $user = Auth::user();
-
         $count = User::role('administrator')->count();
 
         if ($count == 1)
         {
             return redirect()->route('adminUser.index')->with('delete', 'No se puede eliminar el administrador, debe existir por lo menos un administrador');
-        }elseif($user->slug == $slug)
+        }elseif(Auth::user()->slug == $slug)
         {
             return redirect()->route('adminUser.index')->with('delete', 'No puedes eliminar a este administrador, actualmente esta en uso');
         }else

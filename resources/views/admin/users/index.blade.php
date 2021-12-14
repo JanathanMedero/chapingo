@@ -17,6 +17,9 @@ Moderadores
 						<div class="col-6">
 							<h3 class="card-tittle">Tabla de moderadores</h3>
 						</div>
+						<div class="col-6 d-flex justify-content-end">
+							<a href="{{ route('users.create') }}" class="btn btn-success">Agregar usuario</a>
+						</div>
 					</div>
 
 					<x-alerts></x-alerts>

@@ -17,6 +17,9 @@ Redactores
 						<div class="col-6">
 							<h3 class="card-tittle">Tabla de redactores</h3>
 						</div>
+						<div class="col-6 d-flex justify-content-end">
+							<a href="{{ route('users.create') }}" class="btn btn-success">Agregar usuario</a>
+						</div>
 						<x-alerts></x-alerts>
 					</div>
 				</card-header>
@@ -33,6 +36,13 @@ Redactores
 									</tr>
 								</thead>
 								<tbody>
+									@if($users->isEmpty())
+									<tr>
+										<td colspan="4">
+											<h4 class="text-center my-4">No hay redactores registrados</h4>
+										</td>
+									</tr>
+									@endif
 									@foreach($users as $user)
 									<tr>
 										<td>{{ $user->name }}</td>
@@ -43,9 +53,9 @@ Redactores
 										<td>
 											<div class="d-flex justify-content-around">
 												<div class="col-4">
-													<a href="{{ route('adminUser.edit', $user->slug) }}" class="btn btn-info btn-block">Editar</a>
+													<a href="{{ route('redactorUser.edit', $user->slug) }}" class="btn btn-info btn-block">Editar</a>
 												</div>
-												<form method="POST" class="form-delete" action="{{ route('admin.delete', $user->slug) }}">
+												<form method="POST" class="form-delete" action="{{ route('redactorUser.delete', $user->slug) }}">
 													@csrf
 													@method("DELETE")
 													<div class="col-4">
@@ -78,7 +88,7 @@ Redactores
 	$('.form-delete').submit(function(e){
 		e.preventDefault();
 		Swal.fire({
-			title: '¿Estas seguro de eliminar a este administrador?',
+			title: '¿Estas seguro de eliminar a este redactor?',
 			text: "Esta acción no se puede revertir",
 			icon: 'warning',
 			showCancelButton: true,
