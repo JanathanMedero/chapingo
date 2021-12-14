@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Auth;
 
 class UserController extends Controller
 {
@@ -17,7 +18,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(15);
+        if (Auth::user()->hasRole('moderator') ) {
+            abort(403, 'Accion no autorizada, no tiene los permisos para entrar a esta sección.');
+        }
+
+        $users = User::whereHas("roles", function($q){ $q->where("name", "moderator"); })->paginate(10);
 
         return view('admin.users.index', compact('users'));
     }
@@ -69,9 +74,16 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
-        //
+
+        if (Auth::user()->hasRole('moderator') ) {
+            abort(403, 'Accion no autorizada, no tiene los permisos para entrar a esta sección.');
+        }
+
+        $user = User::where('slug', $slug)->first();
+
+        return view('admin.users.edit', compact('user'));
     }
 
     /**
@@ -81,9 +93,44 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $slug)
     {
-        //
+        
+        $user = User::where('slug', $slug)->first();
+
+
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->syncRoles($request->role);
+
+        $user->save();
+
+        return redirect()->route('users.index')->with('success', 'Usuario actualizado correctamente');
+
+    }
+
+    public function updatePassword(Request $request, $slug)
+    {
+        $user = User::where('slug', $slug)->first();
+
+        $rules = [
+            'password' => 'required|confirmed',
+        ];
+
+        $customMessages = [
+            'required' => 'Ingrese una contraseña',
+            'confirmed' => 'Las contraseñas no coinciden'
+        ];
+
+        $this->validate($request, $rules, $customMessages);
+
+        $user->password = Hash::make($request->password);
+
+        $user->save();
+
+        return redirect()->route('users.index')->with('success', 'Contraseña actualizada correctamente');
+
     }
 
     /**

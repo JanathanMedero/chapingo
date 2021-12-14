@@ -15,7 +15,7 @@ Usuarios registrados
 				<card-header class="my-4 mx-4">
 					<div class="row">
 						<div class="col-6">
-							<h3 class="card-tittle">Tabla de usuarios</h3>
+							<h3 class="card-tittle">Tabla de moderadores</h3>
 						</div>
 						<div class="col-6">
 							<div class="row d-flex justify-content-end">
@@ -38,7 +38,7 @@ Usuarios registrados
 										<th><a href="#" class="dataTable-sorter">Nombre</a></th>
 										<th><a href="#" class="dataTable-sorter">Correo electrónico</a></th>
 										<th><a href="#" class="dataTable-sorter">Tipo de usuario</a></th>
-										<th><a href="#" class="dataTable-sorter">Acciones</a></th>
+										<th class="text-center"><a href="#" class="dataTable-sorter">Acciones</a></th>
 									</tr>
 								</thead>
 								<tbody>
@@ -56,7 +56,7 @@ Usuarios registrados
 										<td>
 											<div class="d-flex justify-content-around">
 												<div class="col-4">
-													<a href="#" class="btn btn-info btn-block">Editar</a>
+													<a href="{{ route('users.edit', $user->slug) }}" class="btn btn-info btn-block">Editar</a>
 												</div>
 												<div class="col-4">
 													<a href="#" class="btn btn-danger btn-block">Eliminar</a>

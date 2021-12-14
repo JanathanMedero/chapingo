@@ -44,10 +44,19 @@
                         </li>
 
                         @can('show users')
-                        <li class="sidebar-item {{ request()->is('users') ? 'active' : '' }} {{ request()->is('nuevo-usuario') ? 'active' : '' }}">
+                        <li class="sidebar-item">
                             <a href="{{ route('users.index') }}" class='sidebar-link'>
                                 <i class="bi bi-person-lines-fill"></i>
-                                <span>Usuarios</span>
+                                <span>Administradores</span>
+                            </a>
+                        </li>
+                        @endcan
+
+                        @can('show users')
+                        <li class="sidebar-item {{ request()->is('users') ? 'active' : '' }} {{ request()->is('nuevo-usuario') ? 'active' : '' }} {{ request()->is('editar-usuario/*') ? 'active' : '' }}">
+                            <a href="{{ route('users.index') }}" class='sidebar-link'>
+                                <i class="bi bi-person-lines-fill"></i>
+                                <span>Moderadores</span>
                             </a>
                         </li>
                         @endcan
