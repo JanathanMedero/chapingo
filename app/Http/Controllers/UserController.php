@@ -106,7 +106,13 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect()->route('users.index')->with('success', 'Usuario actualizado correctamente');
+        $route = url()->previous();
+
+        if (Str::contains($route, 'administrador')) {
+            return redirect()->route('adminUser.index')->with('success', 'Usuario actualizado correctamente');
+        }else{
+            return redirect()->route('users.index')->with('success', 'Usuario actualizado correctamente');
+        }
 
     }
 
@@ -129,7 +135,13 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect()->route('users.index')->with('success', 'Contraseña actualizada correctamente');
+        $route = url()->previous();
+
+        if (Str::contains($route, 'administrador')) {
+            return redirect()->route('adminUser.index')->with('success', 'Contraseña actualizada correctamente');
+        }else{
+            return redirect()->route('users.index')->with('success', 'Contraseña actualizada correctamente');
+        }
 
     }
 
@@ -142,8 +154,21 @@ class UserController extends Controller
     public function destroy($slug)
     {
 
-        User::where('slug', $slug)->delete();
+        $user = Auth::user();
 
-        return redirect()->route('users.index')->with('success', 'Moderador eliminado correctamente');
+        $count = User::role('moderator')->count();
+
+        if ($count == 1)
+        {
+            return redirect()->route('users.index')->with('delete', 'No se puede eliminar el moderador, debe existir por lo menos un moderador');
+        }elseif($user->slug == $slug)
+        {
+            return redirect()->route('user.index')->with('delete', 'No puedes eliminar a este moderador, actualmente esta en uso');
+        }else
+        {
+            User::where('slug', $slug)->delete();
+
+            return redirect()->route('users.index')->with('success', 'Moderador eliminado correctamente');
+        }
     }
 }

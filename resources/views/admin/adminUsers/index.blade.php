@@ -17,11 +17,8 @@ Usuarios registrados
 						<div class="col-6">
 							<h3 class="card-tittle">Tabla de administradores</h3>
 						</div>
-						
+						<x-alerts></x-alerts>
 					</div>
-
-					<x-alerts></x-alerts>
-
 				</card-header>
 				<div class="card-body">
 					<div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
@@ -50,11 +47,15 @@ Usuarios registrados
 										<td>
 											<div class="d-flex justify-content-around">
 												<div class="col-4">
-													<a href="#" class="btn btn-info btn-block">Editar</a>
+													<a href="{{ route('adminUser.edit', $user->slug) }}" class="btn btn-info btn-block">Editar</a>
 												</div>
-												<div class="col-4">
-													<a href="#" class="btn btn-danger btn-block">Eliminar</a>
-												</div>
+												<form method="POST" class="form-delete" action="{{ route('admin.delete', $user->slug) }}">
+													@csrf
+													@method("DELETE")
+													<div class="col-4">
+														<button type="submit" class="btn btn-danger">Eliminar</button>
+													</div>
+												</form>
 											</div>
 										</td>
 									</tr>
@@ -64,7 +65,7 @@ Usuarios registrados
 							</table>
 						</div>
 						<div class="dataTable-bottom">
-							{{-- {{ $users->links('custom-paginate') }} --}}
+							{{ $users->links('custom-paginate') }}
 						</div>
 					</div>
 				</div>
@@ -73,3 +74,27 @@ Usuarios registrados
 	</div>
 </div>
 @endsection
+
+@push('extra-js')
+<script src="{{ asset('js/sweetalert2.js') }}"></script>
+<script src="{{ asset('dashboard/assets/vendors/sweetalert2/sweetalert2.all.min.js') }}"></script>
+<script type="text/javascript">
+	$('.form-delete').submit(function(e){
+        e.preventDefault();
+        Swal.fire({
+          title: '¿Estas seguro de eliminar a este administrador?',
+          text: "Esta acción no se puede revertir",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Borrar',
+          cancelButtonText: 'Cancelar'
+      }).then((result) => {
+          if (result.value) {
+            this.submit();
+        }
+    })
+  });
+</script>
+@endpush

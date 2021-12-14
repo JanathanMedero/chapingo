@@ -45,7 +45,7 @@
                         </li>
 
                         @can('show users')
-                        <li class="sidebar-item {{ request()->is('administrators') ? 'active' : '' }}">
+                        <li class="sidebar-item {{ request()->is('administrators') ? 'active' : '' }} {{ request()->is('editar-usuario/*/administrador') ? 'active' : '' }}">
                             <a href="{{ route('adminUser.index') }}" class='sidebar-link'>
                                 <i class="bi bi-people-fill"></i>
                                 <span>Administradores</span>
@@ -54,7 +54,7 @@
                         @endcan
 
                         @can('show users')
-                        <li class="sidebar-item {{ request()->is('users') ? 'active' : '' }} {{ request()->is('nuevo-usuario') ? 'active' : '' }} {{ request()->is('editar-usuario/*') ? 'active' : '' }}">
+                        <li class="sidebar-item {{ request()->is('users') ? 'active' : '' }} {{ request()->is('nuevo-usuario') ? 'active' : '' }} {{ request()->is('editar-usuario/*/moderador') ? 'active' : '' }}">
                             <a href="{{ route('users.index') }}" class='sidebar-link'>
                                 <i class="bi bi-person-lines-fill"></i>
                                 <span>Moderadores</span>

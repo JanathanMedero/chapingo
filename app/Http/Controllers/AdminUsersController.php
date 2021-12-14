@@ -62,9 +62,11 @@ class AdminUsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
-        //
+        $user = User::where('slug', $slug)->first();
+
+        return view('admin.adminUsers.edit', compact('user'));
     }
 
     /**
@@ -85,8 +87,23 @@ class AdminUsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($slug)
     {
-        //
+        $user = Auth::user();
+
+        $count = User::role('administrator')->count();
+
+        if ($count == 1)
+        {
+            return redirect()->route('adminUser.index')->with('delete', 'No se puede eliminar el administrador, debe existir por lo menos un administrador');
+        }elseif($user->slug == $slug)
+        {
+            return redirect()->route('adminUser.index')->with('delete', 'No puedes eliminar a este administrador, actualmente esta en uso');
+        }else
+        {
+            User::where('slug', $slug)->delete();
+
+            return redirect()->route('adminUser.index')->with('success', 'Administrador eliminado correctamente');
+        }
     }
 }
