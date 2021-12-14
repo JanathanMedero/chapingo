@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{ asset('dashboard/assets/vendors/bootstrap-icons/bootstrap-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('dashboard/assets/css/app.css') }}">
     <link rel="shortcut icon" href="{{ asset('dashboard/assets/images/favicon.svg') }}" type="image/x-icon">
+    @stack('extra-css')
 </head>
 
 <body>
@@ -44,9 +45,9 @@
                         </li>
 
                         @can('show users')
-                        <li class="sidebar-item">
-                            <a href="{{ route('users.index') }}" class='sidebar-link'>
-                                <i class="bi bi-person-lines-fill"></i>
+                        <li class="sidebar-item {{ request()->is('administrators') ? 'active' : '' }}">
+                            <a href="{{ route('adminUser.index') }}" class='sidebar-link'>
+                                <i class="bi bi-people-fill"></i>
                                 <span>Administradores</span>
                             </a>
                         </li>
@@ -407,6 +408,7 @@
 
         @yield('content')
     </div>
+    <script src="{{ asset('dashboard/assets/vendors/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('dashboard/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
     <script src="{{ asset('dashboard/assets/js/bootstrap.bundle.min.js') }}"></script>
 
@@ -414,6 +416,7 @@
     <script src="{{ asset('dashboard/assets/js/pages/dashboard.js') }}"></script>
 
     <script src="{{ asset('dashboard/assets/js/main.js') }}"></script>
+    @stack('extra-js')
 </body>
 
 </html>

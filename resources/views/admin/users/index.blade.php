@@ -17,13 +17,6 @@ Usuarios registrados
 						<div class="col-6">
 							<h3 class="card-tittle">Tabla de moderadores</h3>
 						</div>
-						<div class="col-6">
-							<div class="row d-flex justify-content-end">
-								<div class="col-4">
-									<a href="{{ route('users.create') }}" class="btn btn-success btn-block">Agregar usuario</a>
-								</div>
-							</div>
-						</div>
 					</div>
 
 					<x-alerts></x-alerts>
@@ -58,15 +51,18 @@ Usuarios registrados
 												<div class="col-4">
 													<a href="{{ route('users.edit', $user->slug) }}" class="btn btn-info btn-block">Editar</a>
 												</div>
-												<div class="col-4">
-													<a href="#" class="btn btn-danger btn-block">Eliminar</a>
-												</div>
+												<form method="POST" class="form-delete" action="{{ route('user.delete', $user->slug) }}">
+													@csrf
+													@method("DELETE")
+													<div class="col-4">
+														<button type="submit" class="btn btn-danger">Eliminar</button>
+													</div>
+												</form>
 											</div>
 										</td>
 									</tr>
 									@endforeach
 								</tbody>
-
 							</table>
 						</div>
 						<div class="dataTable-bottom">
@@ -79,3 +75,46 @@ Usuarios registrados
 	</div>
 </div>
 @endsection
+
+@push('extra-js')
+<script src="{{ asset('js/sweetalert2.js') }}"></script>
+<script src="{{ asset('dashboard/assets/vendors/sweetalert2/sweetalert2.all.min.js') }}"></script>
+<script type="text/javascript">
+	$('.form-delete').submit(function(e){
+        e.preventDefault();
+        Swal.fire({
+          title: '¿Estas seguro de eliminar a este moderador?',
+          text: "Esta acción no se puede revertir",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Borrar',
+          cancelButtonText: 'Cancelar'
+      }).then((result) => {
+          if (result.value) {
+            this.submit();
+        }
+    })
+  });
+
+// 	Swal.fire({
+//   title: 'Are you sure?',
+//   text: "You won't be able to revert this!",
+//   icon: 'warning',
+//   showCancelButton: true,
+//   confirmButtonColor: '#3085d6',
+//   cancelButtonColor: '#d33',
+//   confirmButtonText: 'Yes, delete it!'
+// }).then((result) => {
+//   if (result.isConfirmed) {
+//     Swal.fire(
+//       'Deleted!',
+//       'Your file has been deleted.',
+//       'success'
+//     )
+//   }
+// })
+
+</script>
+@endpush
