@@ -21,7 +21,7 @@
                                 onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
                                 <span>Cerrar Sesión</span>
-                                </a>
+                            </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf

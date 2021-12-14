@@ -62,6 +62,13 @@
                         </li>
                         @endcan
 
+                        <li class="sidebar-item {{ request()->is('redactors') ? 'active' : '' }} {{ request()->is('editar-usuario/*/redactor') ? 'active' : '' }}">
+                            <a href="{{ route('redactor.index') }}" class='sidebar-link'>
+                                <i class="bi bi-pen-fill"></i>
+                                <span>Redactores</span>
+                            </a>
+                        </li>
+
                         <li class="sidebar-item">
                             <a href="{{ route('admin') }}" class='sidebar-link'>
                                 <i class="bi bi-megaphone-fill"></i>

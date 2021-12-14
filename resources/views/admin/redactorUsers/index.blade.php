@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('head')
-Administradores
+Redactores
 @endsection
 
 @section('content')
@@ -15,7 +15,7 @@ Administradores
 				<card-header class="my-4 mx-4">
 					<div class="row">
 						<div class="col-6">
-							<h3 class="card-tittle">Tabla de administradores</h3>
+							<h3 class="card-tittle">Tabla de redactores</h3>
 						</div>
 						<x-alerts></x-alerts>
 					</div>
@@ -38,11 +38,7 @@ Administradores
 										<td>{{ $user->name }}</td>
 										<td>{{ $user->email }}</td>
 										<td>
-											@if($user->can('show users'))
-											<span class="badge bg-success">Administrador</span>
-											@else
-											<span class="badge bg-info">Moderador</span>
-											@endif
+											<span class="badge bg-primary">Redactor</span>
 										</td>
 										<td>
 											<div class="d-flex justify-content-around">
@@ -80,21 +76,21 @@ Administradores
 <script src="{{ asset('dashboard/assets/vendors/sweetalert2/sweetalert2.all.min.js') }}"></script>
 <script type="text/javascript">
 	$('.form-delete').submit(function(e){
-        e.preventDefault();
-        Swal.fire({
-          title: '¿Estas seguro de eliminar a este administrador?',
-          text: "Esta acción no se puede revertir",
-          icon: 'warning',
-          showCancelButton: true,
-          confirmButtonColor: '#3085d6',
-          cancelButtonColor: '#d33',
-          confirmButtonText: 'Borrar',
-          cancelButtonText: 'Cancelar'
-      }).then((result) => {
-          if (result.value) {
-            this.submit();
-        }
-    })
-  });
+		e.preventDefault();
+		Swal.fire({
+			title: '¿Estas seguro de eliminar a este administrador?',
+			text: "Esta acción no se puede revertir",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'Borrar',
+			cancelButtonText: 'Cancelar'
+		}).then((result) => {
+			if (result.value) {
+				this.submit();
+			}
+		})
+	});
 </script>
 @endpush

@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('head')
-Usuarios registrados
+Moderadores
 @endsection
 
 @section('content')

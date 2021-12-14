@@ -58,5 +58,26 @@ class DatabaseSeeder extends Seeder
             'email'     => 'wilson@pyscom.com',
             'password'  => Hash::make('admin'),
         ])->assignRole('moderator');
+
+        User::create([
+            'name'      => 'Luisa Yohan Doe',
+            'slug'      =>  Str::slug('Luisa Yohan Doe'),
+            'email'     => 'luisa@pyscom.com',
+            'password'  => Hash::make('admin'),
+        ])->assignRole('redactor');
+
+        User::create([
+            'name'      => 'Cloe Dischannel',
+            'slug'      =>  Str::slug('Cloe Dischannel'),
+            'email'     => 'cloe@pyscom.com',
+            'password'  => Hash::make('admin'),
+        ])->assignRole('redactor');
+
+        User::create([
+            'name'      => 'Marco Olivares Doe',
+            'slug'      =>  Str::slug('Marco Olivares Doe'),
+            'email'     => 'Marco@pyscom.com',
+            'password'  => Hash::make('admin'),
+        ])->assignRole('redactor');
     }
 }
