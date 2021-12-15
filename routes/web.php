@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminUsersController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\RedactorController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +32,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('redactors', [RedactorController::class, 'index'])->name('redactor.index');
     Route::get('editar-usuario/{slug}/redactor/', [RedactorController::class, 'edit'])->name('redactorUser.edit');
     Route::delete('eliminar-usuario/{slug}/redactor', [RedactorController::class, 'destroy'])->name('redactorUser.delete');
+
+    //Notices
+    Route::get('noticias', [NoticeController::class, 'index'])->name('notice.index');
+    Route::get('nueva-noticia', [NoticeController::class, 'create'])->name('notice.create');
+    Route::post('nueva-noticia/creada', [NoticeController::class, 'store'])->name('notice.store');
 
 });
 

@@ -69,8 +69,8 @@
                             </a>
                         </li>
 
-                        <li class="sidebar-item">
-                            <a href="{{ route('admin') }}" class='sidebar-link'>
+                        <li class="sidebar-item {{ request()->is('noticias') ? 'active' : '' }} {{ request()->is('nueva-noticia') ? 'active' : '' }}">
+                            <a href="{{ route('notice.index') }}" class='sidebar-link'>
                                 <i class="bi bi-megaphone-fill"></i>
                                 <span>Noticias</span>
                             </a>

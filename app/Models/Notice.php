@@ -10,6 +10,8 @@ class Notice extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['user_id', 'title', 'slug', 'image', 'subtitle', 'body', 'publish'];
+
     public function User()
     {
         return $this->belongsTo(User::class);

@@ -24,7 +24,8 @@ class CreateNoticesTable extends Migration
             $table->string('image')->nullable();
             $table->string('subtitle')->nullable();
             $table->text('body');
-            $table->string('tags')->nullable();
+            // $table->string('tags')->nullable();
+            $table->boolean('publish')->default(0);
 
             $table->timestamps();
         });
