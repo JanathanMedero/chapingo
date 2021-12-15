@@ -18,7 +18,7 @@ Tabla de noticias
 							<h3 class="card-tittle">Tabla de noticias</h3>
 						</div>
 						<div class="col-6 d-flex justify-content-end">
-							<a href="{{ route('notice.create') }}" class="btn btn-success">Nueva noticia</a>
+							<a href="{{ route('notice.create') }}" class="btn btn-success mb-0">Nueva noticia</a>
 						</div>
 					</div>
 				</card-header>
@@ -57,7 +57,7 @@ Tabla de noticias
 										<td>
 											<div class="d-flex justify-content-around">
 												<div class="col-4">
-													<a href="#" class="btn btn-info btn-block">Editar</a>
+													<a href="{{ route('notice.edit', $notice->slug) }}" class="btn btn-info btn-block">Editar</a>
 												</div>
 												<form method="POST" class="form-delete" action="#">
 													@csrf

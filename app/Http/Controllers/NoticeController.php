@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreNoticeRequest;
 use App\Models\Notice;
 use Auth;
 use Illuminate\Http\Request;
@@ -21,7 +22,7 @@ class NoticeController extends Controller
         return view('admin.notices.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreNoticeRequest $request)
     {
 
         $user = Auth::user();
@@ -60,5 +61,20 @@ class NoticeController extends Controller
 
         return redirect()->route('notice.index')->with('success', 'Noticia creada correctamente');
 
+    }
+
+    public function edit($slug)
+    {
+        $notice = Notice::where('slug', $slug)->first();
+
+        return view('admin.notices.edit', compact('notice'));
+    }
+
+
+    public function update(Request $request, $slug)
+    {
+        dd('entrando');
+
+        $notice = Notice::where('slug', $slug)->first();
     }
 }

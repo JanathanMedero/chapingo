@@ -5,7 +5,6 @@ Nueva noticia
 @endsection
 
 @push('extra-css')
-{{-- <script src="https://cdn.ckeditor.com/ckeditor5/31.1.0/classic/ckeditor.js"></script> --}}
 <script type="text/javascript" src="{{ asset('dashboard/assets/vendors/ckeditor/ckeditor.js') }}"></script>
 @endpush
 
@@ -23,6 +22,16 @@ Nueva noticia
 							<h3 class="card-tittle">Nueva noticia</h3>
 						</div>
 					</div>
+					@if($errors->any())
+					<div class="alert alert-danger alert-dismissible show fade mt-2">
+						<ul class="mb-0">
+							@foreach($errors->all() as $error)
+							<li>{{ $error }}</li>
+							@endforeach
+						</ul>
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+					@endif
 				</card-header>
 
 				<form method="POST" action="{{ route('notice.store') }}" enctype="multipart/form-data">
@@ -52,7 +61,7 @@ Nueva noticia
 								<div class="col-md-12 mt-4">
 									<div class="form-group">
 										<label for="body" class="form-label">Cuerpo de la noticia</label>
-										<textarea class="form-control" name="body" placeholder="Ingresa el cuerpo de la noticia" id="editor" style="display: none;"></textarea>
+										<textarea class="form-control" name="body" placeholder="Ingresa el cuerpo de la noticia" id="editor" style="display: none;">{!! old('body') !!}</textarea>
 									</div>
 								</div>
 							</div>

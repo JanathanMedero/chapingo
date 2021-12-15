@@ -37,6 +37,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('noticias', [NoticeController::class, 'index'])->name('notice.index');
     Route::get('nueva-noticia', [NoticeController::class, 'create'])->name('notice.create');
     Route::post('nueva-noticia/creada', [NoticeController::class, 'store'])->name('notice.store');
+    Route::get('editar-noticia/{slug}', [NoticeController::class, 'edit'])->name('notice.edit');
+    Route::put('noticia/{slug}/actualizada', [NoticeController::class, 'update'])->name('notice.update');
 
 });
 
