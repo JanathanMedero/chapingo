@@ -46,12 +46,26 @@ class UserController extends Controller
     public function store(StoreUserRequest $request)
     {
 
-        User::create([
-            'name'      => $request->name,
-            'slug'      => Str::slug($request->name),
-            'email'     => $request->email,
-            'password'  => Hash::make($request->password),
-        ])->assignRole($request->role);
+        $uniqueSlug = Str::slug($request->name);
+
+        $exist = User::where('slug', $uniqueSlug)->first();
+
+        if ($exist == null) {
+            User::create([
+                'name'      => $request->name,
+                'slug'      => Str::slug($request->name),
+                'email'     => $request->email,
+                'password'  => Hash::make($request->password),
+            ])->assignRole($request->role);
+        }else{
+            $random = Str::random(10);
+            User::create([
+                'name'      => $request->name,
+                'slug'      => Str::slug($request->name.'-'.$random),
+                'email'     => $request->email,
+                'password'  => Hash::make($request->password),
+            ])->assignRole($request->role);
+        }
 
         $user = Auth::user();
 
