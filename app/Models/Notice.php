@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Jenssegers\Date\Date;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -15,6 +16,11 @@ class Notice extends Model
     public function User()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function getCreatedAtAttribute($date)
+    {
+        return new Date($date);
     }
 
 }

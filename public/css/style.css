@@ -160,7 +160,7 @@ button:focus {
   z-index: 99;
   transition: background 0.4s, all 0.3s linear; }
   .header_area .navbar {
-    background: transparent;
+    background: #003366;
     padding: 0px;
     border: 0px;
     border-radius: 0px; }
@@ -169,7 +169,7 @@ button:focus {
       .header_area .navbar .nav .nav-item .nav-link {
         font: 500 14px/80px "Rubik", sans-serif;
         text-transform: capitalize;
-        color: #002347;
+        color: #fff;
         padding: 0px;
         display: inline-block; }
         @media (max-width: 991px) {
@@ -178,7 +178,7 @@ button:focus {
         .header_area .navbar .nav .nav-item .nav-link:after {
           display: none; }
       .header_area .navbar .nav .nav-item:hover .nav-link, .header_area .navbar .nav .nav-item.active .nav-link {
-        color: #fdc632; }
+        color: #4ba3c7; }
       .header_area .navbar .nav .nav-item.submenu {
         position: relative; }
         .header_area .navbar .nav .nav-item.submenu ul {

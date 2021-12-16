@@ -23,7 +23,7 @@
 			<div class="container">
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<a class="navbar-brand logo_h" href="{{ route('home') }}"
-				><img src="{{ asset('img/logo.png') }}" alt=""
+				><img src="{{ asset('imagenes/logo.png') }}" alt=""
 				/></a>
 				<button
 				class="navbar-toggler"
@@ -50,7 +50,7 @@
 					<a class="nav-link" href="about-us.html">Nosotros</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="about-us.html">Blog</a>
+					<a class="nav-link" href="{{ route('blog') }}">Blog</a>
 				</li>
 				<li class="nav-item submenu dropdown">
 					<a
@@ -87,7 +87,7 @@
 							<a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
 							document.getElementById('logout-form').submit();">
 							<span>Cerrar Sesión</span>
-							</a>
+						</a>
 						<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
 							@csrf
 						</form>
