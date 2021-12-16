@@ -59,7 +59,7 @@ Tabla de noticias
 												<div class="col-4">
 													<a href="{{ route('notice.edit', $notice->slug) }}" class="btn btn-info btn-block">Editar</a>
 												</div>
-												<form method="POST" class="form-delete" action="#">
+												<form method="POST" class="form-delete" action="{{ route('notice.destroy', $notice->slug) }}">
 													@csrf
 													@method("DELETE")
 													<div class="col-4">
@@ -83,3 +83,29 @@ Tabla de noticias
 		</section>
 	</div>
 </div>
+
+@push('extra-js')
+<script src="{{ asset('js/sweetalert2.js') }}"></script>
+<script src="{{ asset('dashboard/assets/vendors/sweetalert2/sweetalert2.all.min.js') }}"></script>
+
+<script type="text/javascript">
+	$('.form-delete').submit(function(e){
+        e.preventDefault();
+        Swal.fire({
+          title: '¿Estas seguro de eliminar la noticia?',
+          text: "Esta acción no se puede revertir",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Borrar',
+          cancelButtonText: 'Cancelar'
+      }).then((result) => {
+          if (result.value) {
+            this.submit();
+        }
+    })
+  });
+</script>
+
+@endpush

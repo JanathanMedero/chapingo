@@ -18,8 +18,8 @@
 			<div class="card">
 				<card-header class="my-4 mx-4">
 					<div class="row">
-						<div class="col-6">
-							<h3 class="card-tittle">Nueva noticia</h3>
+						<div class="col-12">
+							<h3 class="card-tittle">Editar Noticia - {{ $notice->title }}</h3>
 						</div>
 					</div>
 					@if($errors->any())
@@ -95,8 +95,12 @@
 										</div>
 									</div>
 								</div>
-								@if($notice->image != null)
-								<div class="col-md-6">
+							</form>
+							@if($notice->image != null)
+							<div class="col-md-6">
+								<form action="{{ route('notice.deleteImage', $notice->slug) }}" class="form-delete" method="POST">
+									@csrf
+									@method("DELETE")
 									<div class="row">
 										<div class="col-md-12 mt-4 mb-2">
 											<p class="mb-0 text-center">Imágen actual</p>
@@ -109,31 +113,31 @@
 									</div>
 									<div class="row d-flex justify-content-center">
 										<div class="col-md-8 mt-2">
-											<button type="button" class="btn btn-danger btn-block">Eliminar imágen</button>
+											<button type="submit" class="btn btn-danger btn-block">Eliminar imágen</button>
 										</div>
 									</div>
 								</div>
-								@else
-								<div class="col-md-6">
-									<div class="row">
-										<div class="col-md-12 mt-4">
-											<h5 class="text-center" style="color: red;">Esta noticia no cuenta con ninguna imágen.</h5>
-										</div>
+							</form>
+							@else
+							<div class="col-md-6">
+								<div class="row">
+									<div class="col-md-12 mt-4">
+										<h5 class="text-center" style="color: red;">Esta noticia no cuenta con ninguna imágen.</h5>
 									</div>
 								</div>
-								@endif
 							</div>
+							@endif
 						</div>
 					</div>
-				</form>
-
+				</div>
 			</div>
-
 		</section>
 	</div>
 </div>
 
 @push('extra-js')
+<script src="{{ asset('js/sweetalert2.js') }}"></script>
+<script src="{{ asset('dashboard/assets/vendors/sweetalert2/sweetalert2.all.min.js') }}"></script>
 
 <script>
 	ClassicEditor
@@ -144,6 +148,26 @@
 	.catch( error => {
 		console.error( error );
 	} );
+</script>
+
+<script type="text/javascript">
+	$('.form-delete').submit(function(e){
+        e.preventDefault();
+        Swal.fire({
+          title: '¿Estas seguro de eliminar la imágen?',
+          text: "Esta acción no se puede revertir",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Borrar',
+          cancelButtonText: 'Cancelar'
+      }).then((result) => {
+          if (result.value) {
+            this.submit();
+        }
+    })
+  });
 </script>
 
 @endpush

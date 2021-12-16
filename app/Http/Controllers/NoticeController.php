@@ -73,8 +73,70 @@ class NoticeController extends Controller
 
     public function update(Request $request, $slug)
     {
-        dd('entrando');
 
         $notice = Notice::where('slug', $slug)->first();
+
+        $notice->title = $request->title;
+        $notice->subtitle = $request->subtitle;
+
+        if ($request->publish == 'on') {
+            $notice->publish = 1;
+        }else{
+            $notice->publish = 0;
+        }
+
+        $notice->body = $request->body;
+
+        if ($request->hasFile('image')) {
+
+            if ($notice->image == null) {
+                $randomSlugImg = Str::random(15);
+                $extension = $request->file('image')->extension();
+                $file = $request->file('image');
+                $nameImage = $randomSlugImg.'.'.$extension;
+                $file->move(public_path().'/imagenes/noticias/', $nameImage);
+                $notice->image = $nameImage;
+            }
+            else{ 
+                file_exists(public_path('imagenes/noticias/'.$notice->image));
+                unlink(public_path('imagenes/noticias/'.$notice->image));
+                $randomSlugImg = Str::random(15);
+                $extension = $request->file('image')->extension();
+                $file = $request->file('image');
+                $nameImage = $randomSlugImg.'.'.$extension;
+                $file->move(public_path().'/imagenes/noticias/', $nameImage);
+                $notice->image = $nameImage;
+            }
+        }
+
+        $notice->save();
+            
+        return redirect()->route('notice.index')->with('success', 'Noticia actualizada correctamente');
+    }
+
+    public function deleteImage($slug)
+    {
+        $notice = Notice::where('slug', $slug)->first();
+
+        if (file_exists(public_path('imagenes/noticias/'.$notice->image))) {
+            unlink(public_path('imagenes/noticias/'.$notice->image));
+
+            $notice->image = null;
+            $notice->save();
+        }
+        return redirect()->route('notice.index')->with('success', 'Imágen eliminada correctamente');
+    }
+
+    public function destroy($slug)
+    {
+        $notice = Notice::where('slug', $slug)->first();
+
+        if (file_exists(public_path('imagenes/noticias/'.$notice->image))) {
+            unlink(public_path('imagenes/noticias/'.$notice->image));
+        }
+
+        $notice->delete();
+
+        return redirect()->route('notice.index')->with('success', 'Noticia eliminada correctamente');
     }
 }

@@ -39,6 +39,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('nueva-noticia/creada', [NoticeController::class, 'store'])->name('notice.store');
     Route::get('editar-noticia/{slug}', [NoticeController::class, 'edit'])->name('notice.edit');
     Route::put('noticia/{slug}/actualizada', [NoticeController::class, 'update'])->name('notice.update');
+    Route::delete('noticia/{slug}/imagen-eliminada', [NoticeController::class, 'deleteImage'])->name('notice.deleteImage');
+    Route::delete('noticia/{slug}/eliminada', [NoticeController::class, 'destroy'])->name('notice.destroy');
 
 });
 
