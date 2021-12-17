@@ -43,13 +43,13 @@
 			id="navbarSupportedContent"
 			>
 			<ul class="nav navbar-nav menu_nav ml-auto">
-				<li class="nav-item active">
-					<a class="nav-link" href="#">Inicio</a>
+				<li class="nav-item {{ request()->is('/') ? 'active' : '' }}">
+					<a class="nav-link" href="{{ route('home') }}">Inicio</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="about-us.html">Nosotros</a>
 				</li>
-				<li class="nav-item">
+				<li class="nav-item {{ request()->is('blog') ? 'active' : '' }}">
 					<a class="nav-link" href="{{ route('blog') }}">Blog</a>
 				</li>
 				<li class="nav-item submenu dropdown">

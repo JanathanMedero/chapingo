@@ -66,13 +66,15 @@ Chapingo - Blog
 							</div>
 							<div class="col-md-9">
 								<div class="blog_post">
-									<img src="{{ asset('imagenes/noticias/'.$notice->image) }}" alt="">
+									<a href="{{ route('blog.show', $notice->slug) }}">
+										<img src="{{ asset('imagenes/noticias/'.$notice->image) }}" alt="">
+									</a>
 									<div class="blog_details">
-										<a href="single-blog.html">
+										<a href="{{ route('blog.show', $notice->slug) }}">
 											<h2>{{ $notice->title }}</h2>
 										</a>
 										<p>{{ $notice->subtitle }}</p>
-										<a href="single-blog.html" class="blog_btn">View More</a>
+										<a href="{{ route('blog.show', $notice->slug) }}" class="blog_btn">Leer más</a>
 									</div>
 								</div>
 							</div>

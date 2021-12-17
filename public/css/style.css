@@ -1136,7 +1136,7 @@ button:focus {
       line-height: 20px;
       vertical-align: middle; }
     .blog_info .blog_meta li a:hover {
-      color: #fdc632; }
+      color: #006699; }
 
 .blog_post img {
   max-width: 100%; }
@@ -1153,7 +1153,7 @@ button:focus {
     -o-transition: all 0.3s linear;
     transition: all 0.3s linear; }
     .blog_details h2:hover {
-      color: #fdc632; }
+      color: #003366; }
   .blog_details p {
     margin-bottom: 26px; }
 
@@ -1244,7 +1244,7 @@ button:focus {
       margin-bottom: 4px;
       transition: all 0.3s linear; }
       .blog_right_sidebar .popular_post_widget .post_item .media-body h3:hover {
-        color: #fdc632; }
+        color: #003366; }
     .blog_right_sidebar .popular_post_widget .post_item .media-body p {
       font-size: 12px;
       line-height: 21px;
@@ -2958,9 +2958,9 @@ h6 {
   line-height: 34px;
   display: inline-block; }
   .blog_btn:hover {
-    background: #fdc632;
-    border-color: #fdc632;
-    color: #002347; }
+    background: #003366;
+    border-color: #003366;
+    color: #fff; }
 
 /* End Main Button Area css
 ============================================================================================ */
