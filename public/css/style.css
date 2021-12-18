@@ -1345,7 +1345,7 @@ button:focus {
   font-weight: 400; }
 
 .blog-pagination .page-item.active .page-link {
-  background: #fdc632;
+  background: #002347;
   border-color: transparent;
   color: #fff; }
 
@@ -1368,7 +1368,7 @@ button:focus {
 .blog-pagination .page-link:hover {
   color: #fff;
   text-decoration: none;
-  background: #fdc632;
+  background: #002347;
   border-color: #eee; }
 
 /*============ Start Blog Single Styles  =============*/

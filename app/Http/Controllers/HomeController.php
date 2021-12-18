@@ -14,7 +14,7 @@ class HomeController extends Controller
 
     public function blog()
     {
-        $notices = Notice::where('publish', 1)->get();
+        $notices = Notice::where('publish', 1)->paginate(4);
 
         return view('blog.index', compact('notices'));
     }

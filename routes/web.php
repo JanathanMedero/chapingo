@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminUsersController;
+use App\Http\Controllers\AvatarController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NoticeController;
@@ -44,6 +45,9 @@ Route::middleware(['auth'])->group(function () {
     Route::put('noticia/{slug}/actualizada', [NoticeController::class, 'update'])->name('notice.update');
     Route::delete('noticia/{slug}/imagen-eliminada', [NoticeController::class, 'deleteImage'])->name('notice.deleteImage');
     Route::delete('noticia/{slug}/eliminada', [NoticeController::class, 'destroy'])->name('notice.destroy');
+
+    //avatars
+    Route::post('user/{slug}/avatar/store', [AvatarController::class, 'store'])->name('avatar.store');
 
 });
 

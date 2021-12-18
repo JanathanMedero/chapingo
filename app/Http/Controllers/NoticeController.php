@@ -49,13 +49,13 @@ class NoticeController extends Controller
         }
 
         Notice::create([
-            'user_id' => $user->id,
-            'title' => $request->title,
-            'subtitle' => $request->subtitle,
-            'slug' => Str::slug($request->title.'-'.$random),
-            'body' => $request->body,
-            'publish' => $request->publish,
-            'image' => $nameImage,
+            'user_id'   => $user->id,
+            'title'     => $request->title,
+            'subtitle'  => $request->subtitle,
+            'slug'      => Str::slug($request->title.'-'.$random),
+            'body'      => $request->body,
+            'publish'   => $request->publish,
+            'image'     => $nameImage,
             
         ]);
 
