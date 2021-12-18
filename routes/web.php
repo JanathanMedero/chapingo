@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminUsersController;
 use App\Http\Controllers\AvatarController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\RedactorController;
@@ -48,6 +49,10 @@ Route::middleware(['auth'])->group(function () {
 
     //avatars
     Route::post('user/{slug}/avatar/store', [AvatarController::class, 'store'])->name('avatar.store');
+
+    //galerry
+    Route::get('editar-noticia/{slug}/galería-de-imagenes', [GalleryController::class, 'create'])->name('gallery.create');
+    Route::post('Galeria-creada/{slug}', [GalleryController::class, 'store'])->name('gallery.store');
 
 });
 

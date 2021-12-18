@@ -90,8 +90,9 @@
 										</div>
 									</div>
 									<div class="row">
-										<div class="col-md-12 mt-4">
-											<button type="submit" class="btn btn-info">Actualizar noticia</button>
+										<div class="col-md-12 mt-4 d-flex">
+											<div class="col-md-6"><button type="submit" class="btn btn-info">Actualizar noticia</button></div>
+											<div class="col-md-6 d-flex justify-content-end"><a href="{{ route('gallery.create', $notice->slug) }}" type="button" class="btn btn-success">Galería de imágenes</a></div>
 										</div>
 									</div>
 								</div>
