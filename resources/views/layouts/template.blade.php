@@ -15,6 +15,7 @@
 	<link rel="stylesheet" href="{{ asset('css/nice-select/css/nice-select.css') }}" />
 	<!-- main css -->
 	<link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+	 @stack('extra-css')
 </head>
 
 @yield('content')
@@ -33,5 +34,6 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 <script src="{{ asset('js/template/gmaps.min.js') }}"></script>
 <script src="{{ asset('js/template/theme.js') }}"></script>
+ @stack('extra-js')
 </body>
 </html>

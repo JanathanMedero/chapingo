@@ -50,7 +50,7 @@ Galería de imágenes
 								@foreach($notice->gallery as $gallery)
 								<div class="col-md-3 d-flex align-items-center">
 									<div class="row d-flex justify-content-center align-items-center">
-										<div class="col-md-12 px-2 py-2 d-flex align-items-center" style="width: 150px; height: 150px;">
+										<div class="col-md-12 px-2 py-2 d-flex align-items-center" style="width: 150px; height: 150px; overflow: hidden;">
 											<img src="{{ asset('imagenes/noticias/galeria/'.$gallery->image) }}" class="img-fluid">
 										</div>
 										<div class="col-md-12 mt-4">

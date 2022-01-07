@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Gallery;
 use App\Models\Notice;
 use Illuminate\Http\Request;
 
@@ -13,6 +14,8 @@ class BlogController extends Controller
 
         $latestNotices = Notice::all()->except($notice->id)->take(4);
 
-        return view('blog.show', compact('notice', 'latestNotices'));
+        $gallery = Gallery::where('notice_id', $notice->id)->get();
+
+        return view('blog.show', compact('notice', 'latestNotices', 'gallery'));
     }
 }

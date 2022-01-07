@@ -6,6 +6,10 @@ Chapingo - Blog - {{ $notice->title }}
 
 @section('content')
 
+@push('extra-css')
+<link href="{{ asset('css/lightbox.css') }}" rel="stylesheet" />
+@endpush
+
 <x-header></x-header>
 
 <!--================Blog Area =================-->
@@ -243,6 +247,26 @@ Chapingo - Blog - {{ $notice->title }}
 				</div>
 			</div>
 		</div>
+
+		{{-- Galería de imágenes --}}
+		@if($gallery->isNotEmpty())
+		<div class="row">
+			<div class="col-md-12 d-flex justify-content-center py-2" style="border-bottom: 1px solid #eceff1;">
+				<h2>Galería de imágenes</h2>
+			</div>
+		</div>
+		<div class="row d-flex justify-content-center">
+			@foreach($gallery as $image)
+			<div class="col-md-3 px-2 py-2 mt-4" style="height: 150px; overflow: hidden;">
+				<a href="{{ asset('imagenes/noticias/galeria/'.$image->image) }}" data-lightbox="{{ $image->notice_id }}">
+					<img class="img-fluid" src="{{ asset('imagenes/noticias/galeria/'.$image->image) }}">
+				</a>
+			</div>
+			@endforeach
+		</div>
+		@endif
+		{{-- Fin de la galería de imágenes --}}
+
 	</div>
 </section>
 <!--================Blog Area =================-->
@@ -250,3 +274,18 @@ Chapingo - Blog - {{ $notice->title }}
 <x-footer></x-footer>
 
 @endsection
+
+@push('extra-js')
+{{-- <script src="{{ asset('js/lightbox-pluss-jquery.js') }}"></script> --}}
+<script src="{{ asset('js/lightbox.js') }}"></script>
+
+<script>
+    lightbox.option({
+      'resizeDuration': 200,
+      'wrapAround': true,
+      'alwaysShowNavOnTouchDevices': true,
+      'disableScrolling': true 
+    })
+</script>
+
+@endpush
