@@ -9,6 +9,8 @@ Tabla de noticias
 
 	<x-header-admin></x-header-admin>
 
+	<x-alerts></x-alerts>
+
 	<div class="page-content">
 		<section class="section">
 			<div class="card">

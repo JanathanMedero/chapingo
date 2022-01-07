@@ -53,6 +53,8 @@ Route::middleware(['auth'])->group(function () {
     //galerry
     Route::get('editar-noticia/{slug}/galería-de-imagenes', [GalleryController::class, 'create'])->name('gallery.create');
     Route::post('Galeria-creada/{slug}', [GalleryController::class, 'store'])->name('gallery.store');
+    Route::delete('eliminar-imagen/{image}/eliminada', [GalleryController::class, 'destroyImage'])->name('gallery.destroyImage');
+    Route::delete('eliminar-galería/{id}/eliminada', [GalleryController::class, 'destroyGallery'])->name('gallery.destroyGallery');
 
 });
 
