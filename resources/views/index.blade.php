@@ -11,24 +11,49 @@ Chapingo
 	<!--================ End Header Menu Area =================-->
 
 
-
+	@if($images->isNotEmpty())
 	<!--================ Start Home Banner Area =================-->
 	<section class="home_banner_area">
 		<div class="banner_inner">
-			<div class="container">
+			<div class="container-fluid">
 				<div class="row">
-					<div class="col-lg-12">
-						<div class="banner_content text-center">
-							<p class="text-uppercase">
-								Best online education service In the world
-							</p>
-							<h2 class="text-uppercase mt-4 mb-5">
-								One Step Ahead This Season
-							</h2>
-						{{-- <div>
-							<a href="#" class="primary-btn2 mb-3 mb-sm-0">learn more</a>
-							<a href="#" class="primary-btn ml-sm-3 ml-0">see course</a>
-						</div> --}}
+					<div class="col-lg-12 px-0">
+
+						<div id="demo" class="carousel slide carousel-fade" data-ride="carousel"> 
+
+							<!-- Indicators -->
+							<ul class="carousel-indicators">
+								@foreach ($images as $indexKey => $image)
+
+						           	<li data-target="#demo" data-slide-to="{{ $indexKey }}" class="active"></li>
+						        @endforeach
+							</ul>
+
+							<!-- The slideshow -->
+							<div class="carousel-inner" style="max-height: 1000px;">
+
+								@foreach($images as $image)
+									@if($loop->first)
+									<div class="carousel-item active">
+										<img src="{{ asset('imagenes/slider/'.$image->image) }}" class="img-fluid">
+									</div>
+									@else
+									<div class="carousel-item">
+										<img src="{{ asset('imagenes/slider/'.$image->image) }}" class="img-fluid">
+									</div>
+									@endif
+								@endforeach
+							</div>
+
+							<!-- Left and right controls -->
+							<a class="carousel-control-prev" href="#demo" data-slide="prev">
+								<span class="carousel-control-prev-icon"></span>
+							</a>
+							<a class="carousel-control-next" href="#demo" data-slide="next">
+								<span class="carousel-control-next-icon"></span>
+							</a>
+
+						</div>
 					</div>
 				</div>
 			</div>
@@ -36,6 +61,8 @@ Chapingo
 	</div>
 </section>
 <!--================ End Home Banner Area =================-->
+
+@endif
 
 <!--================ Start Feature Area =================-->
 <section class="feature_area section_gap_top">
@@ -694,3 +721,12 @@ Chapingo
 </footer>
 <!--================ End footer Area  =================-->
 @endsection
+
+
+@push('extra-js')
+<script>
+	$('.carousel').carousel({
+		interval: 3500
+	})
+</script>
+@endpush

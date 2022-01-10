@@ -98,7 +98,7 @@ button:focus {
       padding: 70px 0; } }
 
 .section_gap_top {
-  padding-top: 130px; }
+  padding-top: 40px; }
   @media (max-width: 991px) {
     .section_gap_top {
       padding-top: 70px; } }
@@ -329,7 +329,7 @@ button:focus {
   z-index: 1;
   min-height: 900px;
   position: relative;
-  background: url(../img/banner/home-banner.jpg) no-repeat center;
+  /*background: url(../img/banner/home-banner.jpg) no-repeat center;*/
   background-size: cover; }
   .home_banner_area .banner_inner {
     position: absolute;

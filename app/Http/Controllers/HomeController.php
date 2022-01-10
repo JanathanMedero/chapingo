@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Notice;
+use App\Models\Slider;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        return view('index');
+        $images = Slider::all();
+
+        return view('index', compact('images'));
     }
 
     public function blog()
