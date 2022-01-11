@@ -35,7 +35,7 @@
                 </div>
                 <div class="sidebar-menu">
                     <ul class="menu">
-                        <li class="sidebar-title">Menu</li>
+                        <li class="sidebar-title">Usuarios y roles</li>
 
                         <li class="sidebar-item {{ request()->is('admin') ? 'active' : '' }}">
                             <a href="{{ route('admin') }}" class='sidebar-link'>
@@ -71,6 +71,8 @@
                         </li>
                         @endcan
 
+                        <li class="sidebar-title">Personalización del sitio</li>
+
                         <li class="sidebar-item {{ request()->is('noticias') ? 'active' : '' }} {{ request()->is('nueva-noticia') ? 'active' : '' }}">
                             <a href="{{ route('notice.index') }}" class='sidebar-link'>
                                 <i class="bi bi-megaphone-fill"></i>
@@ -82,6 +84,12 @@
                             <a href="{{ route('slider.index') }}" class='sidebar-link'>
                                 <i class="bi bi-images"></i>
                                 <span>Carousel principal</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item {{ request()->is('carreras') ? 'active' : '' }}">
+                            <a href="{{ route('course.index') }}" class='sidebar-link'>
+                                <i class="bi bi-signpost-2"></i>
+                                <span>Carreras</span>
                             </a>
                         </li>
                     </ul>

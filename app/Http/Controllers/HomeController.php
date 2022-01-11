@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\Notice;
 use App\Models\Slider;
 use Illuminate\Http\Request;
@@ -12,7 +13,9 @@ class HomeController extends Controller
     {
         $images = Slider::all();
 
-        return view('index', compact('images'));
+        $courses = Course::all();
+
+        return view('index', compact('images', 'courses'));
     }
 
     public function blog()

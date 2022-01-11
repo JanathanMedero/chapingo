@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminUsersController;
 use App\Http\Controllers\AvatarController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NoticeController;
@@ -62,6 +63,13 @@ Route::middleware(['auth'])->group(function () {
     Route::post('carousel-principal/agregar-imagenes', [SliderController::class, 'store'])->name('slider.store');
     Route::delete('carousel-principal/{image}/eliminada', [SliderController::class, 'destroyImage'])->name('slider.destroyImage');
     Route::delete('carousel-principal/imagenes/eliminadas', [SliderController::class, 'destroySlider'])->name('slider.destroySlider');
+
+    //carreras
+    Route::get('carreras', [CourseController::class, 'index'])->name('course.index');
+    Route::post('carrera/agregada', [CourseController::class, 'store'])->name('course.store');
+    Route::get('carrera/{slug}/editar', [CourseController::class, 'edit'])->name('course.edit');
+    Route::put('carrera/{slug}/actualizada', [CourseController::class, 'update'])->name('course.update');
+    Route::delete('carrera/{slug}/eliminada', [CourseController::class, 'destroy'])->name('course.destroy');
 
 });
 

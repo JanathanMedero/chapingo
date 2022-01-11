@@ -19,13 +19,13 @@ Chapingo
 				<div class="row">
 					<div class="col-lg-12 px-0">
 
-						<div id="demo" class="carousel slide carousel-fade" data-ride="carousel"> 
+						<div id="slider" class="carousel slide carousel-fade" data-ride="carousel"> 
 
 							<!-- Indicators -->
 							<ul class="carousel-indicators">
 								@foreach ($images as $indexKey => $image)
 
-						           	<li data-target="#demo" data-slide-to="{{ $indexKey }}" class="active"></li>
+						           	<li data-target="#slider" data-slide-to="{{ $indexKey }}" class="active"></li>
 						        @endforeach
 							</ul>
 
@@ -46,10 +46,10 @@ Chapingo
 							</div>
 
 							<!-- Left and right controls -->
-							<a class="carousel-control-prev" href="#demo" data-slide="prev">
+							<a class="carousel-control-prev" href="#slider" data-slide="prev">
 								<span class="carousel-control-prev-icon"></span>
 							</a>
-							<a class="carousel-control-next" href="#demo" data-slide="next">
+							<a class="carousel-control-next" href="#slider" data-slide="next">
 								<span class="carousel-control-next-icon"></span>
 							</a>
 
@@ -68,12 +68,12 @@ Chapingo
 <section class="feature_area section_gap_top">
 	<div class="container">
 		<div class="row justify-content-center">
-			<div class="col-lg-5">
+			<div class="col-lg-7">
 				<div class="main_title">
-					<h2 class="mb-3">Awesome Feature</h2>
-					<p>
+					<h2 class="mb-3">Universidad Autónoma de Chapingo</h2>
+					{{-- <p>
 						Replenish man have thing gathering lights yielding shall you
-					</p>
+					</p> --}}
 				</div>
 			</div>
 		</div>
@@ -82,10 +82,9 @@ Chapingo
 				<div class="single_feature">
 					<div class="icon"><span class="flaticon-student"></span></div>
 					<div class="desc">
-						<h4 class="mt-3 mb-2">Scholarship Facility</h4>
+						<h4 class="mt-3 mb-2">Facilidad de becas</h4>
 						<p>
-							One make creepeth, man bearing theira firmament won't great
-							heaven
+							Obtén una de nuestras becas completas hasta la finalización de tu carrera
 						</p>
 					</div>
 				</div>
@@ -95,10 +94,9 @@ Chapingo
 				<div class="single_feature">
 					<div class="icon"><span class="flaticon-book"></span></div>
 					<div class="desc">
-						<h4 class="mt-3 mb-2">Sell Online Course</h4>
+						<h4 class="mt-3 mb-2">Cursos en línea</h4>
 						<p>
-							One make creepeth, man bearing theira firmament won't great
-							heaven
+							Capacitación constante con nuestros cursos en línea
 						</p>
 					</div>
 				</div>
@@ -108,10 +106,9 @@ Chapingo
 				<div class="single_feature">
 					<div class="icon"><span class="flaticon-earth"></span></div>
 					<div class="desc">
-						<h4 class="mt-3 mb-2">Global Certification</h4>
+						<h4 class="mt-3 mb-2">Certificación global</h4>
 						<p>
-							One make creepeth, man bearing theira firmament won't great
-							heaven
+							Al finalizar tu carrera, obtendras tu certificación valida en cualquier parte del mundo
 						</p>
 					</div>
 				</div>
@@ -121,130 +118,12 @@ Chapingo
 </section>
 <!--================ End Feature Area =================-->
 
-<!--================ Start Popular Courses Area =================-->
-<div class="popular_courses">
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-lg-5">
-				<div class="main_title">
-					<h2 class="mb-3">Our Popular Courses</h2>
-					<p>
-						Replenish man have thing gathering lights yielding shall you
-					</p>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<!-- single course -->
-			<div class="col-lg-12">
-				<div class="owl-carousel active_course">
-					<div class="single_course">
-						<div class="course_head">
-							<img class="img-fluid" src="{{ asset('img/courses/c1.jpg') }}" alt="" />
-						</div>
-						<div class="course_content">
-							<span class="price">$25</span>
-							<span class="tag mb-4 d-inline-block">design</span>
-							<h4 class="mb-3">
-								<a href="course-details.html">Custom Product Design</a>
-							</h4>
-							<p>
-								One make creepeth man bearing their one firmament won't fowl
-								meat over sea
-							</p>
-							<div
-							class="course_meta d-flex justify-content-lg-between align-items-lg-center flex-lg-row flex-column mt-4"
-							>
-							<div class="authr_meta">
-								<img src="{{ asset('img/courses/author1.png') }}" alt="" />
-								<span class="d-inline-block ml-2">Cameron</span>
-							</div>
-							<div class="mt-lg-0 mt-3">
-								<span class="meta_info mr-4">
-									<a href="#"> <i class="ti-user mr-2"></i>25 </a>
-								</span>
-								<span class="meta_info"
-								><a href="#"> <i class="ti-heart mr-2"></i>35 </a></span
-								>
-							</div>
-						</div>
-					</div>
-				</div>
+<x-courses></x-courses>
 
-				<div class="single_course">
-					<div class="course_head">
-						<img class="img-fluid" src="{{ asset('img/courses/c2.jpg') }}" alt="" />
-					</div>
-					<div class="course_content">
-						<span class="price">$25</span>
-						<span class="tag mb-4 d-inline-block">design</span>
-						<h4 class="mb-3">
-							<a href="course-details.html">Social Media Network</a>
-						</h4>
-						<p>
-							One make creepeth man bearing their one firmament won't fowl
-							meat over sea
-						</p>
-						<div
-						class="course_meta d-flex justify-content-lg-between align-items-lg-center flex-lg-row flex-column mt-4"
-						>
-						<div class="authr_meta">
-							<img src="{{ asset('img/courses/author2.png') }}" alt="" />
-							<span class="d-inline-block ml-2">Cameron</span>
-						</div>
-						<div class="mt-lg-0 mt-3">
-							<span class="meta_info mr-4">
-								<a href="#"> <i class="ti-user mr-2"></i>25 </a>
-							</span>
-							<span class="meta_info"
-							><a href="#"> <i class="ti-heart mr-2"></i>35 </a></span
-							>
-						</div>
-					</div>
-				</div>
-			</div>
 
-			<div class="single_course">
-				<div class="course_head">
-					<img class="img-fluid" src="{{ asset('img/courses/c3.jpg') }}" alt="" />
-				</div>
-				<div class="course_content">
-					<span class="price">$25</span>
-					<span class="tag mb-4 d-inline-block">design</span>
-					<h4 class="mb-3">
-						<a href="course-details.html">Computer Engineering</a>
-					</h4>
-					<p>
-						One make creepeth man bearing their one firmament won't fowl
-						meat over sea
-					</p>
-					<div
-					class="course_meta d-flex justify-content-lg-between align-items-lg-center flex-lg-row flex-column mt-4"
-					>
-					<div class="authr_meta">
-						<img src="{{ asset('img/courses/author3.png') }}" alt="" />
-						<span class="d-inline-block ml-2">Cameron</span>
-					</div>
-					<div class="mt-lg-0 mt-3">
-						<span class="meta_info mr-4">
-							<a href="#"> <i class="ti-user mr-2"></i>25 </a>
-						</span>
-						<span class="meta_info"
-						><a href="#"> <i class="ti-heart mr-2"></i>35 </a></span
-						>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-</div>
-</div>
-</div>
-<!--================ End Popular Courses Area =================-->
 
 <!--================ Start Registration Area =================-->
-<div class="section_gap registration_area">
+{{-- <div class="section_gap registration_area">
 	<div class="container">
 		<div class="row align-items-center">
 			<div class="col-lg-7">
@@ -316,7 +195,7 @@ Chapingo
 		</div>
 	</div>
 </div>
-</div>
+</div> --}}
 <!--================ End Registration Area =================-->
 
 <!--================ Start Trainers Area =================-->
